@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Mini-projet 1STI2D - OBA">
+    <meta name="author" content="OUEDRAOGO Idrissa">
+	
+    <title>HTML5 et Javascript : codage d’un player audio binaural 3D pour mesurer la qualité subjective.</title>
+
+	 <!-- Bootstrap core CSS -->
+    <link href="/PlayerAudio3D/css/irt.css" rel="stylesheet">
+	
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="/PlayerAudio3D/css/jquery-ui.min.css">
+	<link rel="stylesheet" href="/PlayerAudio3D/css/bootstrap-select.min.css">
+
+    <!-- jQuery -->
+    <script src="/PlayerAudio3D/js/jquery.min.js "></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/PlayerAudio3D/js/bootstrap.min.js "></script>
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="/PlayerAudio3D/js/bootstrap-select.min.js"></script>
+
+	<!-- bogJS Framework -->
+	<script src="/PlayerAudio3D/js/bogJS-latest.js"></script>
+
+
+</head>
+
+
+<body>
+
+		
+
+        <!-- Page Content -->
+        <h3>HTML5 et Javascript : codage d’un player audio binaural 3D pour mesurer la qualité subjective.</h3>
+        <img class="img-responsive text-center" src="/PlayerAudio3D/img/spiderman_homecoming.jpg" style="width: 75%; margin-left: auto; margin-right: auto; margin-bottom: 10px;"/>
+
+        <select id="switchPanningMode" class="selectpicker" data-width="70px">
+          <option data-content="<img src='/PlayerAudio3D/img/headphones.png' style='height: 25px;'/>">Headphones</option>
+          <option data-content="<img src='/PlayerAudio3D/img/stereo.png' style='height: 25px;'/>">Stereo</option>
+        </select>
+
+
+        <audio id="drama_audio"
+               poster="/PlayerAudio3D/img/spiderman_homecoming.jpg"
+               controls
+               controlsList="nodownload"
+               style="width: 85%">
+               <source src="/PlayerAudio3D/media/spider5ch.ogg"
+                       type="audio/ogg codecs=vorbis">
+           
+        </audio>
+
+
+
+<script>
+
+    var om;
+	
+    var AudioContext = window.AudioContext || window.webkitAudioContext;
+    var ctx = new AudioContext();
+    ctx.listener.setOrientation(0,0,-1,0,1,0);  // default values
+
+
+    $(document).ready(function() {
+        init(); 
+    });
+	   
+    function init(){
+		
+        var drama_audio = document.getElementById('drama_audio');
+		var reader = new SceneReader();
+		
+        om = new ObjectManager('/PlayerAudio3D/scenes/spider.spatdif', ctx,
+                reader, drama_audio, 5);
+				
+        om.setPanningType("HRTF");
+		om.masterGain.setGain(3);
+		
+        $("#drama_audio").on("playing", function(){
+            om.start();
+        });
+        $("#drama_audio").on("pause", function(){
+            om.pause();
+        });
+        $("#drama_audio").on("seeked", function(){
+            om.setTime(this.currentTime, false);
+        });
+		
+		 $("#switchPanningMode").on('change', function (){
+                om.togglePanningType();
+        });
+    }
+
+
+</script>
+
+</body>
+
+</html>

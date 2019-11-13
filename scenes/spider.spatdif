@@ -1,0 +1,30 @@
+/spatdif/meta/audiobed/url /PlayerAudio3D/media/spider5ch.ogg
+/spatdif/meta/audiobed/tracks 5
+
+
+/spatdif/time 0.0
+/spatdif/source/Bed0/position 0.0 0.0 0.0
+/spatdif/source/Bed0/interpolate 0
+/spatdif/source/Bed0/track_mapping bed_0
+/spatdif/source/Bed0/gain 1
+/spatdif/source/Bed0/interactive 0
+/spatdif/source/Bed1/position 0.0 0.0 0.0
+/spatdif/source/Bed1/interpolate 0
+/spatdif/source/Bed1/track_mapping bed_1
+/spatdif/source/Bed1/gain 1
+/spatdif/source/Bed1/interactive 0
+/spatdif/source/Bed2/position 0.0 0.0 0.0
+/spatdif/source/Bed2/interpolate 0
+/spatdif/source/Bed2/track_mapping bed_2
+/spatdif/source/Bed2/gain 1
+/spatdif/source/Bed2/interactive 0
+/spatdif/source/Bed3/position 0.0 0.0 0.0
+/spatdif/source/Bed3/interpolate 0
+/spatdif/source/Bed3/track_mapping bed_3
+/spatdif/source/Bed3/gain 1
+/spatdif/source/Bed3/interactive 0
+/spatdif/source/Bed4/position 0.0 0.0 0.0
+/spatdif/source/Bed4/interpolate 0
+/spatdif/source/Bed4/track_mapping bed_4
+/spatdif/source/Bed4/gain 1
+/spatdif/source/Bed4/interactive 0
